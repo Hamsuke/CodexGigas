@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:CodexGigas.ViewModels"
+			 x:Class="CodexGigas.Views.IntegracionNumericaPage"
+			 x:DataType="vm:IntegracionNumericaViewModel">
+    
+    
+    <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="auto" HorizontalOptions="Center">
+        <Grid Grid.Row="0" VerticalOptions="Center" Padding="10">
+            <VerticalStackLayout Spacing="10">
+                <Border HorizontalOptions="Center">
+                    <Entry 
+                       x:Name="EntryPolinomio"
+                       Placeholder="Ingrese el grado del polinomio"
+                       IsReadOnly="True"
+                       WidthRequest="250"
+                       HeightRequest="50"
+                       FontSize="20"
+                       HorizontalTextAlignment="Center"/>
+                </Border>
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <RadioButton Content="Bairstow" FontSize="18"/>
+                    <RadioButton Content="Newton" FontSize="18"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
+
+        <Border Grid.Row="1" Margin="10" VerticalOptions="Center" HorizontalOptions="Center">
+            <Grid ColumnSpacing="10" RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!--//Primera fila-->
+                <Button Grid.Row="0" Grid.Column="0" Text="/" Clicked="OnOperatorClicked" />
+                <Button Grid.Row="0" Grid.Column="1" Text="*" Clicked="OnOperatorClicked" />
+                <Button Grid.Row="0" Grid.Column="2" Text="-" Clicked="OnOperatorClicked" />
+                <Button Grid.Row="0" Grid.Column="3" Text="+" Clicked="OnOperatorClicked" />
+                <Button Grid.Row="0" Grid.Column="4" Text="⌫" Clicked="OnBackspaceClicked" />
+
+                <!--//Segunda fila-->
+                <Button Grid.Row="1" Grid.Column="0" Text="Raiz" />
+                <Button Grid.Row="1" Grid.Column="1" Text="1" Clicked="OnNumberClicked" />
+                <Button Grid.Row="1" Grid.Column="2" Text="2" Clicked="OnNumberClicked" />
+                <Button Grid.Row="1" Grid.Column="3" Text="3" Clicked="OnNumberClicked" />
+                <Button Grid.Row="1" Grid.Column="4" Text="Limpiar" Clicked="OnClearClicked" />
+
+                <!--//Tercera fila-->
+                <Button Grid.Row="2" Grid.Column="0" Text="Potencia" />
+                <Button Grid.Row="2" Grid.Column="1" Text="4" Clicked="OnNumberClicked" />
+                <Button Grid.Row="2" Grid.Column="2" Text="5" Clicked="OnNumberClicked" />
+                <Button Grid.Row="2" Grid.Column="3" Text="6" Clicked="OnNumberClicked" />
+                <Button Grid.Row="2" Grid.Column="4" Text="." />
+
+                <!--//Cuarta fila-->
+                <Button Grid.Row="3" Grid.Column="0" Text="y"/>
+                <Button Grid.Row="3" Grid.Column="1" Text="7" Clicked="OnNumberClicked" />
+                <Button Grid.Row="3" Grid.Column="2" Text="8" Clicked="OnNumberClicked" />
+                <Button Grid.Row="3" Grid.Column="3" Text="9" Clicked="OnNumberClicked" />
+                <Button Grid.Row="3" Grid.Column="4" Text="Pi"/>
+
+                <!--//Quinta fila-->
+                <Button Grid.Row="4" Grid.Column="0" Text="x"/>
+                <Button Grid.Row="4" Grid.Column="1" Text="(" />
+                <Button Grid.Row="4" Grid.Column="2" Text="0" Clicked="OnNumberClicked" />
+                <Button Grid.Row="4" Grid.Column="3" Text=")" />
+                <Button Grid.Row="4" Grid.Column="4" Text="Euler" />
+
+                <!--//Quinta fila-->
+                <Button Grid.Row="5" Grid.Column="0" Text="Seno"/>
+                <Button Grid.Row="5" Grid.Column="1" Text="Coseno" />
+                <Button Grid.Row="5" Grid.Column="2" Text="Tangente" />
+                <Button Grid.Row="5" Grid.Column="3" Text="Secante" />
+                <Button Grid.Row="5" Grid.Column="4" Text="Cosecante" />
+                <Button Grid.Row="5" Grid.Column="5" Text="Cotangente"/>
+
+                <!--//Enter-->
+                <Button Grid.Row="0" Grid.RowSpan="5" Grid.Column="5" Text="Enter"/>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>

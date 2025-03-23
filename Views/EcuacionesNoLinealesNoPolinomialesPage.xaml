@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:CodexGigas.ViewModels"
+			 x:Class="CodexGigas.Views.EcuacionesNoLinealesNoPolinomialesPage"
+			 x:DataType="vm:EcuacionesNoLinealesNoPolinomialesViewModel">
+
+    <VerticalStackLayout>
+        <RadioButton Content="Bisección"/>
+        <RadioButton Content="Regla Falsa"/>
+        <RadioButton Content="Secante"/>
+        <RadioButton Content="Newton-Raphson"/>
+        <RadioButton Content="Punto fijo aplicado"/>
+        <RadioButton Content="Newton-Raphson aplicado a sistemas de ecuaciones no lieales"/>
+        <RadioButton Content="Punto fijo aplicado a sistemas de ecuaciones no lineales"/>
+    </VerticalStackLayout>
+</ContentPage>
