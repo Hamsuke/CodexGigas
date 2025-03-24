@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-			 xmlns:vm="clr-namespace:CodexGigas.ViewModels"
-			 x:Class="CodexGigas.Views.IntegracionNumericaPage"
-			 x:DataType="vm:IntegracionNumericaViewModel">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:CodexGigas.ViewModels"
+             x:Class="CodexGigas.Views.IntegracionNumericaPage"
+             x:DataType="vm:IntegracionNumericaViewModel">
     
     
     <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="auto" HorizontalOptions="Center">
@@ -19,10 +19,7 @@
                        FontSize="20"
                        HorizontalTextAlignment="Center"/>
                 </Border>
-                <HorizontalStackLayout HorizontalOptions="Center">
-                    <RadioButton Content="Bairstow" FontSize="18"/>
-                    <RadioButton Content="Newton" FontSize="18"/>
-                </HorizontalStackLayout>
+                <Picker Title="Selecciona un método" ItemsSource="{Binding Metodos1523}"/>
             </VerticalStackLayout>
         </Grid>
 
@@ -54,7 +51,7 @@
                 <Button Grid.Row="0" Grid.Column="4" Text="⌫" Clicked="OnBackspaceClicked" />
 
                 <!--//Segunda fila-->
-                <Button Grid.Row="1" Grid.Column="0" Text="Raiz" />
+                <Button Grid.Row="1" Grid.Column="0" Text="Raiz" Clicked="OnFunctionClicked"/>
                 <Button Grid.Row="1" Grid.Column="1" Text="1" Clicked="OnNumberClicked" />
                 <Button Grid.Row="1" Grid.Column="2" Text="2" Clicked="OnNumberClicked" />
                 <Button Grid.Row="1" Grid.Column="3" Text="3" Clicked="OnNumberClicked" />
@@ -65,7 +62,7 @@
                 <Button Grid.Row="2" Grid.Column="1" Text="4" Clicked="OnNumberClicked" />
                 <Button Grid.Row="2" Grid.Column="2" Text="5" Clicked="OnNumberClicked" />
                 <Button Grid.Row="2" Grid.Column="3" Text="6" Clicked="OnNumberClicked" />
-                <Button Grid.Row="2" Grid.Column="4" Text="." />
+                <Button Grid.Row="2" Grid.Column="4" Text="." Clicked="OnDecimalClicked"/>
 
                 <!--//Cuarta fila-->
                 <Button Grid.Row="3" Grid.Column="0" Text="y"/>
@@ -76,18 +73,18 @@
 
                 <!--//Quinta fila-->
                 <Button Grid.Row="4" Grid.Column="0" Text="x"/>
-                <Button Grid.Row="4" Grid.Column="1" Text="(" />
+                <Button Grid.Row="4" Grid.Column="1" Text="(" Clicked="OnParenthesisClicked"/>
                 <Button Grid.Row="4" Grid.Column="2" Text="0" Clicked="OnNumberClicked" />
-                <Button Grid.Row="4" Grid.Column="3" Text=")" />
-                <Button Grid.Row="4" Grid.Column="4" Text="Euler" />
+                <Button Grid.Row="4" Grid.Column="3" Text=")" Clicked="OnParenthesisClicked"/>
+                <Button Grid.Row="4" Grid.Column="4" Text="Euler" Clicked="OnFunctionClicked"/>
 
                 <!--//Quinta fila-->
-                <Button Grid.Row="5" Grid.Column="0" Text="Seno"/>
-                <Button Grid.Row="5" Grid.Column="1" Text="Coseno" />
-                <Button Grid.Row="5" Grid.Column="2" Text="Tangente" />
-                <Button Grid.Row="5" Grid.Column="3" Text="Secante" />
-                <Button Grid.Row="5" Grid.Column="4" Text="Cosecante" />
-                <Button Grid.Row="5" Grid.Column="5" Text="Cotangente"/>
+                <Button Grid.Row="5" Grid.Column="0" Text="Sen" Clicked="OnFunctionClicked"/>
+                <Button Grid.Row="5" Grid.Column="1" Text="Cos" Clicked="OnFunctionClicked"/>
+                <Button Grid.Row="5" Grid.Column="2" Text="Tan" Clicked="OnFunctionClicked"/>
+                <Button Grid.Row="5" Grid.Column="3" Text="Secan" Clicked="OnFunctionClicked"/>
+                <Button Grid.Row="5" Grid.Column="4" Text="Cosec" Clicked="OnFunctionClicked"/>
+                <Button Grid.Row="5" Grid.Column="5" Text="Cotan" Clicked="OnFunctionClicked"/>
 
                 <!--//Enter-->
                 <Button Grid.Row="0" Grid.RowSpan="5" Grid.Column="5" Text="Enter"/>

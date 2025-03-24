@@ -19,13 +19,9 @@
                        FontSize="20"
                        HorizontalTextAlignment="Center"/>
                 </Border>
-                <Grid RowDefinitions="auto,auto, auto" ColumnDefinitions="auto,auto" HorizontalOptions="Center">
-                    <RadioButton Grid.Column="0" Grid.Row="0" Content="Vandermonde"/>
-                    <RadioButton Grid.Column="0" Grid.Row="1" Content="Interpolación de Newton"/>
-                    <RadioButton Grid.Column="0" Grid.Row="2" Content="Interpolación Baricéntric (Lagrange)"/>
-                    <RadioButton Grid.Column="1" Grid.Row="0" Content="Minímos Cuadrados"/>
-                    <RadioButton Grid.Column="1" Grid.Row="1" Content="Polinomios Ortogonales de Chebyshev"/>
-                </Grid>
+                <Picker Title="Selecciona un método" 
+                        ItemsSource="{Binding Metodos1014}" 
+                        />
             </VerticalStackLayout>
         </Grid>
 
@@ -37,8 +33,8 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-
                 </Grid.RowDefinitions>
+                
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
