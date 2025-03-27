@@ -1,24 +1,36 @@
-﻿using CodexGigas.Model;
-
-namespace CodexGigas.ViewModels;
+﻿namespace CodexGigas.ViewModels;
 
 public partial class IntegracionNumericaViewModel : BaseViewModel
 {
-    public ObservableCollection<MetodoModels> Metodos1523 { get; set; }
+    [ObservableProperty]
+    private string _funcion;
 
-    public IntegracionNumericaViewModel()
+    [ObservableProperty]
+    private int _seleccion;
+
+    [RelayCommand]
+    public async Task Navegacion()
     {
-        Metodos1523 = new ObservableCollection<MetodoModels>
+#pragma warning disable CS8600 // Warning mugroso me tiene harto
+        string ruta = Seleccion switch
         {
-            new MetodoModels { Id = 15, Name = "Formula cerrada de Newton - Cotes N = 1" },
-            new MetodoModels { Id = 16, Name = "Formula cerrada de Newton - Cotes N = 2" },
-            new MetodoModels { Id = 17, Name = "Formula cerrada de Newton - Cotes N = 3" },
-            new MetodoModels { Id = 18, Name = "Formula abierta de Newton - Cotes N = 1" },
-            new MetodoModels { Id = 19, Name = "Formula abierta de Newton - Cotes N = 2" },
-            new MetodoModels { Id = 20, Name = "Formula abierta de Newton - Cotes N = 3" },
-            new MetodoModels { Id = 21, Name = "Formula de integracion de Romberg" },
-            new MetodoModels { Id = 22, Name = "Cuadraturas de Gauss - Legendre N = 2" },
-            new MetodoModels { Id = 23, Name = "Cuadraturas de Gauss - Legendre N = 3" }
+            0 => "",
+            1 => "",
+            2 => "",
+            3 => "",
+            4 => "",
+            5 => "",
+            6 => "",
+            7 => "",
+            8 => "CuadraturasGaussLegendreN3Page",
+            _ => null
         };
+#pragma warning restore CS8600 // Warning mugroso me tiene harto
+
+        if (!string.IsNullOrEmpty(ruta))
+        {
+            // Enviar "funcion" como parámetro en la URL
+            await Shell.Current.GoToAsync($"{ruta}?funcion={Funcion}");
+        }
     }
 }

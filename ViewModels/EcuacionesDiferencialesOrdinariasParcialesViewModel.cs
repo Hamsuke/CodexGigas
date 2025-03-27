@@ -1,26 +1,34 @@
-﻿using CodexGigas.Model;
-
-namespace CodexGigas.ViewModels;
+﻿namespace CodexGigas.ViewModels;
 
 public partial class EcuacionesDiferencialesOrdinariasParcialesViewModel : BaseViewModel
 {
-    public ObservableCollection<MetodoModels> Metodos2432 { get; set; }
-    public EcuacionesDiferencialesOrdinariasParcialesViewModel()
-    {
-        Metodos2432 = [
-            new () { Id = 0, Name = "<--------Metodos de un paso-------->" },
-            new() { Id = 24, Name = "Euler" },
-            new () { Id = 25, Name = "Euler - Cauchy (regla trapeizodal)" },
-            new () { Id = 26, Name = "Runge - Kutta (euler modificado)" },
-            new () { Id = 27, Name = "Runge - Kutta [Orden 2]" },
-            new () { Id = 0, Name = "<--------Metodos Multipaso--------->" },
-            new () { Id = 28, Name = "Metodo Predictor - Corrector Correctos iterativo para M = 0" },
-            new () { Id = 0, Name = "<--------Sistemas de ecuaciones diferenciales-------->" },
-            new () { Id = 29, Name = "Euler" },
-            new () { Id = 30, Name = "Euler - Cauchy (regla trapeizodal)" },
-            new () { Id = 31, Name = "Runge - Kutta (euler modificado)" },
-            new () { Id = 32, Name = "Runge - Kutta [Orden 2]" },
-        ];
+    [ObservableProperty]
+    private string _funcion;
 
+    [ObservableProperty]
+    private int _seleccion;
+
+    [RelayCommand]
+    public async Task Navegacion()
+    {
+#pragma warning disable CS8600 // Warning mugroso me tiene harto
+        string ruta = Seleccion switch
+        {
+            1 => "",
+            2 => "",
+            3 => "RungeKuttaOrden2Page",
+            5 => "",
+            7 => "",
+            8 => "",
+            9 => "",
+            _ => null
+        };
+#pragma warning restore CS8600 // Warning mugroso me tiene harto
+
+        if (!string.IsNullOrEmpty(ruta))
+        {
+            // Enviar "funcion" como parámetro en la URL
+            await Shell.Current.GoToAsync($"{ruta}?funcion={Funcion}");
+        }
     }
 }

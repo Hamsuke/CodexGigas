@@ -1,17 +1,30 @@
-﻿using CodexGigas.Model;
-
-namespace CodexGigas.ViewModels;
+﻿namespace CodexGigas.ViewModels;
 
 public partial class EcuacionesPolinomialesViewModel : BaseViewModel
 {
-    public ObservableCollection<MetodoModels> Metodos89 { get; set; }
-    public EcuacionesPolinomialesViewModel()
+
+    [ObservableProperty]
+    private string _funcion;
+
+    [ObservableProperty]
+    private int _seleccion;
+
+    [RelayCommand]
+    public async Task Navegacion()
     {
-        Metodos89 = [
+#pragma warning disable CS8600 // Warning mugroso me tiene harto
+        string ruta = Seleccion switch
+        {
+            0 => "BairstowPages",
+            1 => "NewtonPages",
+            _ => null
+        };
+#pragma warning restore CS8600 // Warning mugroso me tiene harto
 
-            new () { Id = 8, Name = "Bairstow" },
-            new () { Id = 9, Name = "Newton" }
-        ];
-
+        if (!string.IsNullOrEmpty(ruta))
+        {
+            // Enviar "funcion" como parámetro en la URL
+            await Shell.Current.GoToAsync($"{ruta}?funcion={Funcion}");
+        }
     }
 }

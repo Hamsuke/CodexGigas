@@ -20,13 +20,26 @@ public partial class InterpolacionPolinomialPolinomiosOrtogonalesAjusteCurvasPag
         }
     }
 
-    private void OnDecimalClicked(object sender, EventArgs e)
+    private void OnSeparatorClicked(object sender, EventArgs e)
     {
-        if (!input.Contains("."))  // Evita agregar más de un punto decimal
+        if (sender is Button button)
         {
-            input += ".";
+            input += "|";
             EntryPolinomio.Text = input;
         }
+    }
+
+    private void OnDecimalClicked(object sender, EventArgs e)
+    {
+        input += ".";
+        EntryPolinomio.Text = input;
+    }
+
+
+    private void OnComaClicked(object sender, EventArgs e)
+    {
+        input += ",";
+        EntryPolinomio.Text = input;
     }
 
     private void OnParenthesisClicked(object sender, EventArgs e)
@@ -36,6 +49,21 @@ public partial class InterpolacionPolinomialPolinomiosOrtogonalesAjusteCurvasPag
             input += button.Text;
             EntryPolinomio.Text = input;
         }
+    }
+
+    private void OnPotenciaClicked(object sender, EventArgs e)
+    {
+        if (sender is Button button)
+        {
+            input += "^";
+            EntryPolinomio.Text = input;
+        }
+    }
+
+    private void OnPiClicked(object sender, EventArgs e)
+    {
+        input += Math.PI;
+        EntryPolinomio.Text = input;
     }
 
     private void OnFunctionClicked(object sender, EventArgs e)
@@ -75,30 +103,5 @@ public partial class InterpolacionPolinomialPolinomiosOrtogonalesAjusteCurvasPag
     {
         input = "";
         EntryPolinomio.Text = "";
-    }
-
-    // Maneja el botón "Enter" (Evaluar la expresión ingresada)
-    private void OnEnterClicked(object sender, EventArgs e)
-    {
-        try
-        {
-            double resultado = EvaluarExpresion(input);
-            EntryPolinomio.Text = resultado.ToString();
-            input = resultado.ToString();
-        }
-        catch (Exception)
-        {
-            EntryPolinomio.Text = "Error";
-            input = "";
-        }
-    }
-
-    // Método para evaluar la expresión matemática ingresada
-    private double EvaluarExpresion(string expresion)
-    {
-        // Convertir la expresión en un cálculo (debes usar una librería o escribir tu propio parser)
-        // Esto es un ejemplo usando System.Data.DataTable
-        var dt = new System.Data.DataTable();
-        return Convert.ToDouble(dt.Compute(expresion, ""));
     }
 }

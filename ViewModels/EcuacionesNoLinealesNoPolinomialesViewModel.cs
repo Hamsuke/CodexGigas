@@ -1,22 +1,34 @@
-﻿using CodexGigas.Model;
-
-namespace CodexGigas.ViewModels;
+﻿namespace CodexGigas.ViewModels;
 
 public partial class EcuacionesNoLinealesNoPolinomialesViewModel : BaseViewModel
 {
-    public ObservableCollection<MetodoModels> Metodos17 { get; set; }
-   public  EcuacionesNoLinealesNoPolinomialesViewModel()
+    [ObservableProperty]
+    private string _funcion;
+
+    [ObservableProperty]
+    private int _seleccion;
+
+    [RelayCommand]
+    public async Task Navegacion()
     {
-        Metodos17 = [
+#pragma warning disable CS8600 // Warning mugroso me tiene harto
+        string ruta = Seleccion switch
+        {
+            0 => "",
+            1 => "",
+            2 => "",
+            3 => "",
+            4 => "PuntoFijoPage",
+            5 => "",
+            6 => "",
+            _ => null
+        };
+#pragma warning restore CS8600 // Warning mugroso me tiene harto
 
-            new () { Id = 1, Name = "Biseccion" },
-            new () { Id = 2, Name = "Regla Falsa" },
-            new () { Id = 3, Name = "Secante" },
-            new () { Id = 4, Name = "Newton - Raphson" },
-            new () { Id = 5, Name = "Punto Fijo" },
-            new () { Id = 6, Name = "Newton - Raphson Aplicado a Sistemas de Ecuaciones no Lineales" },
-            new () { Id = 7, Name = "Punto Fijo Aplicado a Sistemas de Ecuaciones no Lineales" }
-        ];
-
+        if (!string.IsNullOrEmpty(ruta))
+        {
+            // Enviar "funcion" como parámetro en la URL
+            await Shell.Current.GoToAsync($"{ruta}?funcion={Funcion}");
+        }
     }
 }

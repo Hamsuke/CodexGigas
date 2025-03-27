@@ -1,21 +1,31 @@
-﻿using CodexGigas.Model;
-
-namespace CodexGigas.ViewModels;
-
-public partial class InterpolacionPolinomialPolinomiosOrtogonalesAjusteCurvasViewModel : BaseViewModel
-{
-
-    public ObservableCollection<MetodoModels> Metodos1014 { get; set; }
-    public InterpolacionPolinomialPolinomiosOrtogonalesAjusteCurvasViewModel()
+﻿namespace CodexGigas.ViewModels;
+    public partial class InterpolacionPolinomialPolinomiosOrtogonalesAjusteCurvasViewModel : BaseViewModel
     {
-        Metodos1014 = [
+        [ObservableProperty]
+        private string _funcion;
 
-            new () { Id = 10, Name = "Vandermonde" },
-            new () { Id = 11, Name = "Interpolacion de Newton" },
-            new () { Id = 12, Name = "Interpolacion Baricentrica (Lagrange)" },
-            new () { Id = 13, Name = "Minimos Cuadrados" },
-            new () { Id = 14, Name = "Polinomios Ortogonales de Chebyshev" },
-        ];
+        [ObservableProperty]
+        private int _seleccion;
 
+        [RelayCommand]
+        public async Task Navegacion()
+        {
+#pragma warning disable CS8600 // Warning mugroso me tiene harto
+            string ruta = Seleccion switch
+            {
+                0 => "VanderMondePages",
+                1 => "InterDeNewtonPages",
+                2 => "InterBariLagraPages",
+                3 => "MinimosCuadradosPages",
+                4 => "PoliOrtoDeChebyPages",
+                _ => null
+            };
+#pragma warning restore CS8600 // Warning mugroso me tiene harto
+
+            if (!string.IsNullOrEmpty(ruta))
+            {
+                // Enviar "funcion" como parámetro en la URL
+                await Shell.Current.GoToAsync($"{ruta}?funcion={Funcion}");
+            }
+        }
     }
-}

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net9.0-android;net9.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>net9.0-android</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>CodexGigas</RootNamespace>
@@ -28,11 +28,10 @@
 		<!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->
 		<WindowsPackageType>None</WindowsPackageType>
 
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">26.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -53,11 +52,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="11.1.0" />
 		<PackageReference Include="CommunityToolkit.MVVM" Version="8.4.0" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Essentials" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.50" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.50" />
+		<PackageReference Include="Microsoft.Maui.Essentials" Version="9.0.50" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.3" />
 		<PackageReference Include="Xceed.Product.Maui.Toolkit.Full" Version="1.7.24157.1331" />
 	</ItemGroup>
 
@@ -66,9 +66,43 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Reference Include="_Microsoft.Android.Resource.Designer">
-	    <HintPath>obj\Debug\net9.0-android\_Microsoft.Android.Resource.Designer.dll</HintPath>
-	  </Reference>
+	  <MauiXaml Update="Views\EcuacionesDiferenciales\MetodosDeUnPaso\RungeKuttaOrden2Page.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\EcuacionesNoLinealesNoPolinomiales\PuntoFijoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\EcuacionesPolinomiales\BairstowPages.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\EcuacionesPolinomiales\NewtonPages.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\IntegracionNumerica\CuadraturasGaussLegendreN3Page.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\InterpolacionPolinomial\InterBariLagraPages.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\InterpolacionPolinomial\InterDeNewtonPages.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\InterpolacionPolinomial\MinimosCuadradosPages.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\InterpolacionPolinomial\PoliOrtoDeChebyPages.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\InterpolacionPolinomial\VanderMondePages.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="ViewModels\EcuacionesDiferenciales\MetodosMultipaso\" />
+	  <Folder Include="ViewModels\EcuacionesDiferenciales\SistemasDeEcuaciones\" />
+	  <Folder Include="Views\EcuacionesDiferenciales\MetodosMultipaso\" />
+	  <Folder Include="Views\EcuacionesDiferenciales\SistemasDeEcuaciones\" />
 	</ItemGroup>
 
 	<PropertyGroup Label="MauiAppAccelerator">
