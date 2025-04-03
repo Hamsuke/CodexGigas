@@ -1,4 +1,5 @@
-﻿using CodexGigas.ViewModels.EcuacionesDiferenciales.MetodosDeUnPaso;
+﻿using CodexGigas.Services;
+using CodexGigas.ViewModels.EcuacionesDiferenciales.MetodosDeUnPaso;
 using CodexGigas.ViewModels.EcuacionesNoLinealesNoPolinomiales;
 using CodexGigas.ViewModels.EcuacionesPolinomiales;
 using CodexGigas.ViewModels.IntegracionNumerica;
@@ -29,6 +30,10 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+
+        //Servicio de datos
+        builder.Services.AddSingleton<IDataServices, DataServices>();
+        builder.Services.AddSingleton<HttpClient>();
 
         //Armar metodo principal Interpolacion Polinomial
         builder.Services.AddSingleton<InterpolacionPolinomialPolinomiosOrtogonalesAjusteCurvasViewModel>();

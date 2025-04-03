@@ -8,11 +8,19 @@
     
     <VerticalStackLayout>
         <Button Text="Calcular" Command="{Binding SetValoresCommand}"/>
-        <Label Text="Texto Dummy"/>
+        <Label Text="Datos de entrada"/>
         <Label Text="{Binding Funcion}"/>
         <Label Text="Valores de X"/>
         <Label Text="{Binding X}"/>
         <Label Text="Valores de Y"/>
         <Label Text="{Binding Y}"/>
+        <Button Text="Enviar datos" Command="{Binding CalcularCommand}"/>
+        <Label Text="Resultado"/>
+        <Label Text="Funcion"/>
+        <Label Text="{Binding Fx}"/>
+        <Label Text="Respuesta A"/>
+        <Label Text="{Binding Ansa}"/>
+        <Label Text="Respuesta B"/>
+        <Label Text="{Binding Ansb}"/>
     </VerticalStackLayout>
 </ContentPage>

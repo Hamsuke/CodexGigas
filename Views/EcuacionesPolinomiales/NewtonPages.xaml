@@ -10,8 +10,6 @@
         <Button Text="Calcular" Command="{Binding SetValoresCommand}"/>
         <Label Text="Funcion introducida"/>
         <Label Text="{Binding Funcion}"/>
-        <Label Text="Funcion procesada"/>
-        <Label Text="{Binding Function}"/>
         <Label Text="Valor Inicial"/>
         <Label Text="{Binding ValI}"/>
     </VerticalStackLayout>
